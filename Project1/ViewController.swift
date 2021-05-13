@@ -27,6 +27,12 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         cell.textLabel?.text = category
         return cell
     }
-
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let vc = storyboard?.instantiateViewController(identifier: "Images") as? ImagesViewController else { return }
+        let category = categories[indexPath.row]
+        vc.category = category
+        present(vc, animated: true)
+    }
 }
 
